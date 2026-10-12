@@ -1,0 +1,71 @@
+﻿fastapi==0.115.0
+uvicorn[standard]==0.30.0
+gunicorn==23.0.0
+sqlalchemy[asyncio]==2.0.35
+asyncpg==0.29.0
+psycopg2-binary==2.9.9
+alembic==1.13.0
+redis==5.0.0
+celery[redis]==5.4.0
+minio==7.2.0
+python-multipart==0.0.9
+aiofiles==24.1.0
+ffmpeg-python==0.2.0
+jieba==0.42.1
+httpx==0.27.0
+pydantic==2.9.0
+pydantic-settings==2.5.0
+# QA 2026-05-29 P0-4 / B-3 root cause: transformers 5.x requires torch>=2.4 but
+# our Mac Intel venv has torch 2.2.2 (last stable Mac Intel wheel). Mismatch
+# made transformers fall back to a code path with a type-hint NameError
+# (`nn.Module`), which surfaced as the cryptic
+# "Semantic tactic analysis failed: name 'nn' is not defined" in pipeline.log.
+# Same goes for numpy: torch 2.2.2 was built against numpy 1.x and fails on
+# numpy 2.x with "Failed to initialize NumPy: _ARRAY_API not found".
+# Bumping torch/transformers is preferable long-term but for now pin to the
+# torch-2.2-compatible band so fresh venv rebuilds don't regress.
+numpy>=1.26,<2
+transformers>=4.46,<4.50
+sentence-transformers==5.5.1
+alibabacloud-ocr-api20210707
+alibabacloud-tea-openapi
+alibabacloud-tea-util
+faster-whisper
+
+# LLM client for AI range analysis (Replay Workspace)
+anthropic>=0.40
+
+# QA 2026-05-30 B1: Pillow used by aliyun_ocr_service._extract_viewer_phone_heuristic
+# to read frame width/height for percentage-based Y/X thresholds. Previously
+# the lazy `from PIL import Image` silently raised ImportError in production,
+# making the phone viewer-count heuristic a no-op (0/24 frames matched on M0
+# fixture). Pin explicitly so fresh venv rebuilds always have it.
+Pillow>=10,<13
+
+# QA 2026-05-30 E: ModelScope (魔搭) 用来下载 BAAI/bge-small-zh-v1.5
+# embedding 模型。huggingface.co 的 cdn-lfs 在国内被墙,hf-mirror.com 的
+# redirect huggingface_hub 库处理不完整。ModelScope = 阿里云自家模型仓库,
+# 国内骨干网络可达。一次性下载 91MB 到 ~/.cache/workbuddy_models/,后续
+# offline 加载,不依赖 API key。详见 app/services/embedding/embedding_service.py。
+modelscope>=1.37
+
+# QA 2026-05-30 G: openai SDK 用来对接 DashScope OpenAI-compatible
+# endpoint (Qwen Max 等阿里通义千问模型)。settings.llm_provider='qwen'
+# 时 AI Range Analysis 走这条路。详见
+# app/services/llm/range_analysis.py。
+openai>=1.50
+
+# Test deps — kept in main requirements (no dev/runtime split for single-tenant project)
+pytest>=8.0
+pytest-asyncio>=0.23
+
+# A5 (2026-05-30): observability — error tracking. Disabled in dev (empty
+# SENTRY_DSN); paste DSN into .env to enable. Free tier ≤ 5000 errors/mo.
+sentry-sdk[fastapi]>=2.0
+
+# A1 (2026-05-31): auth — password hash, JWT, rate limit, email validation
+argon2-cffi>=23.1
+pyjwt>=2.8
+slowapi>=0.1.9
+email-validator>=2.0
+cachetools>=5.3

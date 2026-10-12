@@ -1,0 +1,150 @@
+# docker-compose.standalone.yml
+# 完整独立部署（自建 PG + Redis + MinIO + 后端 + Celery + Nginx）
+# 启动: docker compose -f docker-compose.standalone.yml up -d
+#
+# ⚠️ 日常开发请用 docker-compose.yml（仅 MinIO）
+#   PG/Redis 共享 AIMS 的 postgres_dev / redis_dev 容器
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: livestream-postgres
+    profiles: [standalone]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-livestream}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-livestream123}
+      POSTGRES_DB: ${POSTGRES_DB:-livestream_analyzer}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-livestream}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: livestream-redis
+    profiles: [standalone]
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    container_name: livestream-minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    ports:
+      - "9002:9000"
+      - "9003:9001"
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: livestream-backend
+    profiles: [standalone]
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-livestream}:${POSTGRES_PASSWORD:-livestream123}@postgres:5432/${POSTGRES_DB:-livestream_analyzer}
+      REDIS_URL: redis://redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      MINIO_BUCKET: ${MINIO_BUCKET:-livestream-videos}
+      MINIO_SECURE: "false"
+      # presigned 视频/高光 URL 对外主机(给手机用),如局域网 IP:9002
+      MINIO_PUBLIC_ENDPOINT: ${MINIO_PUBLIC_ENDPOINT:-}
+      # 登录账号(预置管理员)+ 安全
+      JWT_SECRET: ${JWT_SECRET:-}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      # 云 AI(分析必需)
+      LLM_PROVIDER: ${LLM_PROVIDER:-qwen}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID:-}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET:-}
+      ALIYUN_ASR_APPKEY: ${ALIYUN_ASR_APPKEY:-}
+      ALIYUN_OSS_BUCKET: ${ALIYUN_OSS_BUCKET:-}
+      WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-medium}
+      FEISHU_WEBHOOK_URL: ${FEISHU_WEBHOOK_URL:-}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  celery-worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: livestream-celery
+    profiles: [standalone]
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-livestream}:${POSTGRES_PASSWORD:-livestream123}@postgres:5432/${POSTGRES_DB:-livestream_analyzer}
+      REDIS_URL: redis://redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+      MINIO_BUCKET: ${MINIO_BUCKET:-livestream-videos}
+      MINIO_SECURE: "false"
+      # presigned 视频/高光 URL 对外主机(给手机用),如局域网 IP:9002
+      MINIO_PUBLIC_ENDPOINT: ${MINIO_PUBLIC_ENDPOINT:-}
+      # 登录账号(预置管理员)+ 安全
+      JWT_SECRET: ${JWT_SECRET:-}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      # 云 AI(分析必需)
+      LLM_PROVIDER: ${LLM_PROVIDER:-qwen}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID:-}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET:-}
+      ALIYUN_ASR_APPKEY: ${ALIYUN_ASR_APPKEY:-}
+      ALIYUN_OSS_BUCKET: ${ALIYUN_OSS_BUCKET:-}
+      WHISPER_MODEL_SIZE: ${WHISPER_MODEL_SIZE:-medium}
+      FEISHU_WEBHOOK_URL: ${FEISHU_WEBHOOK_URL:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    command: celery -A app.tasks.pipeline worker --loglevel=info --concurrency=2
+
+  nginx:
+    image: nginx:alpine
+    container_name: livestream-nginx
+    profiles: [standalone]
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  pgdata:
+  minio_data:

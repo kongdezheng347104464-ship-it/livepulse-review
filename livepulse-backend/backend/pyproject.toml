@@ -1,0 +1,48 @@
+# ruff configuration — Phase 1: syntax + unused imports only
+# Phase 2 (later): enable format + full lint ruleset
+#
+# Usage:
+#   ruff check .            # lint only (no auto-fix)
+#   ruff check . --fix      # auto-fix safe issues (unused imports etc.)
+#   ruff format . --check   # dry-run formatting (Phase 2)
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+# Phase 1: E (style errors) + F (pyflakes: unused vars/imports, undefined names)
+# Phase 2 plan: add I, N, W, UP, B, C4, SIM, ASYNC
+select = ["E", "F"]
+ignore = ["E501"]  # line-length: let formatter handle this in Phase 2
+
+[tool.ruff.lint.per-file-ignores]
+# SQLAlchemy model imports — required for Base.metadata registration (create_all)
+"app/main.py" = ["F401"]
+# Lazy imports or sys.path.insert — intentional (circular deps / heavy deps / plugin registry)
+"alembic/env.py" = ["E402"]
+"app/services/step_tracker.py" = ["E402"]
+"app/services/safe_ocr_wrapper.py" = ["E402"]
+"app/services/danmaku_analyzer.py" = ["E402"]
+"app/services/script_analyzer/analyzer.py" = ["E402"]
+"app/services/script_analyzer/classifiers/script_classifier.py" = ["E402"]
+"app/services/script_analyzer/extractors/keyword_extractor.py" = ["E402"]
+"app/tasks/pipeline.py" = ["E402"]
+"tests/regression.py" = ["E402"]
+"test_async_stage1.py" = ["E402"]
+"test_async_stage2.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+# Both fixture and test loops at session scope so asyncpg connection pool
+# (created when async_session_factory is imported) and per-test sessions
+# share the same event loop. Without this, asyncpg socket handles bound
+# to one loop are reused on a different loop → "Event loop is closed"
+# during cleanup (especially after the first integration test runs).
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]

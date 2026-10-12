@@ -1,0 +1,285 @@
+{
+  "source_reference": "~/Desktop/app设计全量图.png",
+  "design_system": "docs/design-system.md",
+  "assets": [
+    {
+      "file": "backgrounds/auth-purple-gradient-panel.png",
+      "size": [
+        900,
+        1400
+      ],
+      "mode": "RGBA",
+      "transparent_corners": false
+    },
+    {
+      "file": "backgrounds/login-abstract-background.png",
+      "size": [
+        1200,
+        900
+      ],
+      "mode": "RGBA",
+      "transparent_corners": false
+    },
+    {
+      "file": "backgrounds/soft-page-background.png",
+      "size": [
+        1200,
+        1600
+      ],
+      "mode": "RGBA",
+      "transparent_corners": false
+    },
+    {
+      "file": "backgrounds/upload-dropzone-background.png",
+      "size": [
+        900,
+        520
+      ],
+      "mode": "RGBA",
+      "transparent_corners": false
+    },
+    {
+      "file": "empty-states/empty-no-analysis.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "empty-states/empty-no-highlights.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "empty-states/empty-no-notes.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "empty-states/empty-no-recordings.png",
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/action-add-note.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/action-export-highlight.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/action-share-sheet.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/action-upload-cloud.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/auth-eye.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/auth-lock.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/auth-phone.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/calendar.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/chart-trend.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/highlight-spark.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/insight-report.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/link.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/message-envelope.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/note-star.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/play-circle.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/score-medal.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/tab-home.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/tab-profile.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/tab-sessions.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/tab-workspace.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/transcript-chat.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "icons/video-camera.png",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "transparent_corners": true
+    },
+    {
+      "file": "preview-icons.png",
+      "size": [
+        1020,
+        760
+      ],
+      "mode": "RGBA",
+      "transparent_corners": false
+    }
+  ]
+}

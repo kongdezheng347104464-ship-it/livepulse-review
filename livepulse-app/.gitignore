@@ -1,0 +1,34 @@
+# ===== macOS =====
+.DS_Store
+
+# ===== Xcode =====
+# 用户级别设置 / 状态（不该共享）
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# 构建产物
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods（如果以后用）
+Pods/
+
+# 备份文件（我们改 pbxproj 时生成的）
+*.backup
+
+# ===== 工具 =====
+*.log

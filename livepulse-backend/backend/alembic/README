@@ -1,0 +1,28 @@
+Alembic migrations — single-database configuration.
+
+Baseline: 0001_initial_baseline.py creates all 5 tables (anchors, live_sessions,
+danmakus, script_segments, pipeline_steps) plus the audit-added indexes.
+
+Two deployment scenarios:
+
+1) Fresh database (new staging/prod):
+     cd backend
+     alembic upgrade head
+
+2) Existing dev database (tables already created by main.py's create_all but
+   without the new indexes):
+     cd backend
+     # Mark schema as baselined without re-creating tables:
+     alembic stamp 0001_baseline
+     # Indexes will be auto-added by main.py's Base.metadata.create_all on next
+     # startup (create_all is additive). Or to be explicit, drop the dev DB and
+     # use path (1).
+
+For new schema changes:
+     alembic revision --autogenerate -m "describe_change"
+     # Review the generated file before committing — autogenerate is best-effort.
+     alembic upgrade head
+
+The env.py reads DATABASE_URL from app/config.py (single source of truth) and
+strips the +asyncpg dialect tag, so you don't need to maintain a separate sync
+URL in alembic.ini.

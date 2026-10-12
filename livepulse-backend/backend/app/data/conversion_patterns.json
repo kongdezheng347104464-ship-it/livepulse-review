@@ -1,0 +1,1365 @@
+[
+  {
+    "phrase": "如果你这都不知道，代表纯新手点关注进群能领教学资料啊。",
+    "conversion_score": 101.54,
+    "triggered_intents": {
+      "strong_purchase": 13,
+      "purchase_consideration": 1,
+      "hesitation": 3,
+      "interaction": 2,
+      "comparison": 2
+    },
+    "tactics": [
+      "authority",
+      "interactive_hook",
+      "social_proof",
+      "emotional_trigger",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "正装别拆拆小的用了不好用，大小一起退回来。",
+    "conversion_score": 101.2,
+    "triggered_intents": {
+      "strong_purchase": 10,
+      "hesitation": 1,
+      "interaction": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "risk_reversal",
+      "emotional_trigger",
+      "scarcity",
+      "interactive_hook",
+      "social_proof",
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "有运费险，快递员可以上门取件，让你售后退换安心无忧。",
+    "conversion_score": 101.2,
+    "triggered_intents": {
+      "strong_purchase": 10,
+      "hesitation": 1,
+      "interaction": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "risk_reversal",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我先走了，你说我不会化妆，我也懒得化妆，我就想赶紧出门。",
+    "conversion_score": 99.54,
+    "triggered_intents": {
+      "strong_purchase": 13,
+      "purchase_consideration": 1,
+      "hesitation": 3,
+      "interaction": 2,
+      "comparison": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "是的，再给大家五单，好的能送口红，不可以送。",
+    "conversion_score": 97.74,
+    "triggered_intents": {
+      "strong_purchase": 11,
+      "purchase_consideration": 1,
+      "interaction": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "risk_reversal",
+      "scarcity",
+      "price_anchor",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "不要记混淆了哟，一会儿你要化妆，要涂粉底液，只是想隔个色素功能，两个粒儿就够了。",
+    "conversion_score": 93.32,
+    "triggered_intents": {
+      "strong_purchase": 11,
+      "purchase_consideration": 1,
+      "interaction": 2,
+      "hesitation": 3
+    },
+    "tactics": [
+      "authority",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "好，然后我再拉远一点点，我再拉远一点点，你们看看啊。",
+    "conversion_score": 91.22,
+    "triggered_intents": {
+      "strong_purchase": 9,
+      "purchase_consideration": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "有没有看到我怎么发力的来打在公屏上？",
+    "conversion_score": 91.22,
+    "triggered_intents": {
+      "strong_purchase": 9,
+      "purchase_consideration": 1,
+      "hesitation": 1
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "有看懂吗？",
+    "conversion_score": 91.22,
+    "triggered_intents": {
+      "strong_purchase": 9,
+      "purchase_consideration": 1,
+      "hesitation": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我拿闪光灯给你看看。",
+    "conversion_score": 91.22,
+    "triggered_intents": {
+      "strong_purchase": 9,
+      "purchase_consideration": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我拿闪光灯给你看，我今儿这个扇子怎么老是摇来摇去的。",
+    "conversion_score": 91.22,
+    "triggered_intents": {
+      "strong_purchase": 9,
+      "purchase_consideration": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我们现在就只折上限，折一下，看到了不看到了吗？",
+    "conversion_score": 91.0,
+    "triggered_intents": {
+      "strong_purchase": 3
+    },
+    "tactics": [
+      "scarcity",
+      "urgency",
+      "emotional_trigger",
+      "risk_reversal",
+      "interactive_hook",
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "指着上线下线是平着往后走哈，然后接下来会去把缺色补上。",
+    "conversion_score": 91.0,
+    "triggered_intents": {
+      "strong_purchase": 3
+    },
+    "tactics": [
+      "urgency",
+      "scarcity",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "能听懂的学会扣一。",
+    "conversion_score": 88.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "interactive_hook",
+      "emotional_trigger",
+      "authority",
+      "risk_reversal"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "工具错了，不分牌子啊，只要你家里有这种圆头的毛茸茸的刷子，不扎脸的都能用。",
+    "conversion_score": 88.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "authority",
+      "social_proof",
+      "risk_reversal",
+      "interactive_hook",
+      "emotional_trigger",
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "反正我这个号只要一开播都是在教化妆，你看到哪步就选哪步，一天进步一点点，三天进步一大步啊。",
+    "conversion_score": 86.14,
+    "triggered_intents": {
+      "strong_purchase": 8,
+      "purchase_consideration": 2,
+      "interaction": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "interactive_hook",
+      "authority",
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "但是我这边等一下把妆化完之后，我们再点啊，这个时候先不着急点它，等一下再去点。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "purchase_consideration": 2
+    },
+    "tactics": [
+      "emotional_trigger",
+      "urgency",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "好，下眼线不上色点上色。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "对对，用眼影粉画的，用眼影粉画的。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "对，眼妆不上色大部分跟你的定妆有关系。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我没有这些要求，我就一个要求，找个地方拍匀，拍到粉扑上看不见粉才能上脸。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "interactive_hook",
+      "authority",
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "假设你这里刚遮住一颗痣啊，好不容易刚遮住一颗斑，你这挺干净的，费了半天劲你还在这拍五十下咋的呀？",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "哎哎画哎呦又粗了，哎呦呦手抖哎呦呦哎呦手抖哎呦手抖。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "好，你根部你画的特别细，你一到尖尖你就一到尖尖你就画出了，对吧？",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "为啥？",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "因为你不敢上边，你的手没有着力点，你把你的手。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你用个粉扑垫在你的脸上，然后你在画的时候呢，你在这儿看一下力。",
+    "conversion_score": 86.0,
+    "triggered_intents": {
+      "strong_purchase": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "平常的粉饼离近一点，看一下细节，长这个样子能看出来吧。",
+    "conversion_score": 83.58,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "purchase_consideration": 4
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "睫毛夹撕了之后呢，就这个就这个啊这个但是这个有点贵哦。",
+    "conversion_score": 82.76,
+    "triggered_intents": {
+      "strong_purchase": 8,
+      "purchase_consideration": 2,
+      "comparison": 1,
+      "interaction": 2,
+      "hesitation": 3
+    },
+    "tactics": [
+      "emotional_trigger",
+      "price_anchor",
+      "scarcity",
+      "authority",
+      "risk_reversal",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我们可以解决一些那种结构性的一些阴影、眼袋泪沟这种它属于大面积的眼袋泪沟的话，它是属于有亮面和暗面。",
+    "conversion_score": 82.34,
+    "triggered_intents": {
+      "strong_purchase": 8,
+      "hesitation": 3,
+      "interaction": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "像我这个卧蚕呀是不是有亮面有暗面，你就把这个暗面和。",
+    "conversion_score": 82.34,
+    "triggered_intents": {
+      "strong_purchase": 8,
+      "hesitation": 3,
+      "interaction": 1
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "she said she loves me, but just with her outfit.",
+    "conversion_score": 80.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "hesitation": 1
+    },
+    "tactics": [
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "啊，高光打在中庭的这个位置好打到我们的眉中心，眼影是邂逅。",
+    "conversion_score": 80.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "是的啊，往上走只是说不能做到一对一的。",
+    "conversion_score": 80.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "hesitation": 1
+    },
+    "tactics": [
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "往上。",
+    "conversion_score": 78.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 1
+    },
+    "tactics": [
+      "urgency",
+      "emotional_trigger",
+      "interactive_hook",
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "就很神奇，姐妹们这修容真的很神奇。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "strong_purchase": 17
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "因为其实我的皮肤我用象牙色，用的这个肤色都还能差不多能显现起来。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "purchase_consideration": 3,
+      "strong_purchase": 3,
+      "comparison": 1,
+      "interaction": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "只要是用白的，颜色太白的话，我涂点素颜霜对练起来啊都练睫毛呢。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "purchase_consideration": 3,
+      "strong_purchase": 3,
+      "comparison": 1,
+      "interaction": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "睫毛白开水，小乖乖白开水啊。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "purchase_consideration": 3,
+      "strong_purchase": 3,
+      "comparison": 1,
+      "interaction": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你橱窗里面你直接搜索搜索搜索白开水，或者搜索睫毛，都能搜出来的哦。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "purchase_consideration": 3,
+      "strong_purchase": 3,
+      "comparison": 1,
+      "interaction": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "啊，没听懂呀，哪里没有听懂，可以具体讲一下吗？",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "呃，早上看的，现在又记不住，不是正常现象啊。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "urgency",
+      "scarcity",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "播之后群里会有学霸做的笔记，笔记一看，哇塞又想起来了。",
+    "conversion_score": 71.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "interactive_hook",
+      "emotional_trigger",
+      "social_proof",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "不用去刻意去记住我说的话，因为知识点太密了，你们根本记不住啊，所以去感受我说的话就行了，不用去刻意记下。",
+    "conversion_score": 69.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我的眉毛你看本身它很黑的，它有点黑。",
+    "conversion_score": 68.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 2,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你们有时候弹幕画画的很快啊，我请你吃洋芋粑，你帮我画一个嘛漂亮的外国人，我不是外国人。",
+    "conversion_score": 62.5,
+    "triggered_intents": {
+      "strong_purchase": 2,
+      "interaction": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "来，鼻尖的地方横着来。",
+    "conversion_score": 61.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "interaction": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "竖着往下啊，鼻子提亮不要一笔拉到底，知道吧哈，竖着来。",
+    "conversion_score": 61.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "interaction": 1,
+      "hesitation": 1
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "she said she loves me, but just with her, i.",
+    "conversion_score": 61.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "interaction": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "啊，高光打在中庭的这个位置好打到我们的眉中心，眼影是先后。",
+    "conversion_score": 61.0,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "interaction": 1,
+      "hesitation": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "好，其他地方我不说了啊，给他快速做。",
+    "conversion_score": 57.0,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "hesitation": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这边跟刚才一样很亮、很润有光泽。",
+    "conversion_score": 56.5,
+    "triggered_intents": {
+      "strong_purchase": 5,
+      "comparison": 2,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "interactive_hook",
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我不太喜欢黑眉毛，因为我觉得黑眉毛有点显凶，所以我就给他染浅了嗯。",
+    "conversion_score": 55.14,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 2,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "粉底的粉扑，尔木萄的尔木萄的。",
+    "conversion_score": 55.14,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 2,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "散粉好用还是粉饼啊？",
+    "conversion_score": 55.14,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 2,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "看你自己的皮肤，如果脸上没啥瑕疵的，用散粉更轻薄更清透。",
+    "conversion_score": 55.14,
+    "triggered_intents": {
+      "strong_purchase": 4,
+      "interaction": 2,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "最后3件手慢无，今天只要99",
+    "conversion_score": 55.0,
+    "triggered_intents": {
+      "hesitation": 1,
+      "strong_purchase": 1
+    },
+    "tactics": [
+      "scarcity",
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "c零零水晶限定五号链接，l c的c零零水晶限定，它的优点很耐用，而且定完妆之后水是这个样子哈，妆感又很细腻，几乎没有粉渣感。",
+    "conversion_score": 52.36,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1,
+      "comparison": 1,
+      "strong_purchase": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "authority",
+      "social_proof",
+      "interactive_hook",
+      "emotional_trigger",
+      "scarcity",
+      "risk_reversal"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这一支里面有七点五克和七点五克比你平常用的十五克、十二克的粉饼用的还要慢。",
+    "conversion_score": 52.36,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1,
+      "comparison": 1,
+      "strong_purchase": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "可是一百六十九太贵了啊，咱这一百三十九、一百零九都不要，九十九两瓶包邮上车一号链接抓紧去拍，我们是由官方店保证正品发货，新鲜日期发货。",
+    "conversion_score": 50.38,
+    "triggered_intents": {
+      "strong_purchase": 6,
+      "purchase_consideration": 1,
+      "interaction": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "price_anchor",
+      "risk_reversal",
+      "scarcity",
+      "social_proof",
+      "emotional_trigger",
+      "urgency",
+      "interactive_hook",
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你本身皮肤啥颜色，他定完妆之后就啥颜色。",
+    "conversion_score": 50.36,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1,
+      "comparison": 1,
+      "strong_purchase": 2,
+      "hesitation": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "是这样的哈。",
+    "conversion_score": 50.36,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1,
+      "comparison": 1,
+      "strong_purchase": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "emotional_trigger",
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我给你看，可以看一下细节哈，家人们。",
+    "conversion_score": 50.36,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1,
+      "comparison": 1,
+      "strong_purchase": 2,
+      "hesitation": 2
+    },
+    "tactics": [
+      "interactive_hook",
+      "authority",
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "有三年的保质期，用量很省，每次挤一泵就一个黄豆粒涂脸中间就得了。",
+    "conversion_score": 48.78,
+    "triggered_intents": {
+      "strong_purchase": 5,
+      "hesitation": 1,
+      "purchase_consideration": 1,
+      "interaction": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "authority",
+      "risk_reversal",
+      "emotional_trigger",
+      "social_proof",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这两瓶呢能大概在三年保质期之前用完，解决两到三年的暗沉呢拔干、卡粉、起皮的问题。",
+    "conversion_score": 48.78,
+    "triggered_intents": {
+      "strong_purchase": 5,
+      "hesitation": 1,
+      "purchase_consideration": 1,
+      "interaction": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "authority",
+      "emotional_trigger",
+      "risk_reversal",
+      "scarcity"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这九十九不贵了吧，来对比一下效果，宝贝儿。",
+    "conversion_score": 48.78,
+    "triggered_intents": {
+      "strong_purchase": 5,
+      "hesitation": 1,
+      "purchase_consideration": 1,
+      "interaction": 1,
+      "comparison": 1
+    },
+    "tactics": [
+      "price_anchor",
+      "social_proof",
+      "emotional_trigger",
+      "risk_reversal",
+      "scarcity",
+      "interactive_hook",
+      "authority"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "刚才我当大家面两边涂的一样的粉底液，阿玛尼还记得吗？",
+    "conversion_score": 46.78,
+    "triggered_intents": {
+      "strong_purchase": 5,
+      "hesitation": 1,
+      "purchase_consideration": 1,
+      "interaction": 1,
+      "comparison": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你。",
+    "conversion_score": 36.34,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "interaction": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "interactive_hook",
+      "authority",
+      "urgency"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "几点开始？",
+    "conversion_score": 36.34,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "interaction": 1
+    },
+    "tactics": [
+      "urgency"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "看几天了，没看到左边脸来看，待会儿好不好？",
+    "conversion_score": 35.76,
+    "triggered_intents": {
+      "strong_purchase": 1,
+      "purchase_consideration": 4,
+      "hesitation": 2
+    },
+    "tactics": [
+      "urgency",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "除非你底子真的很好。",
+    "conversion_score": 34.34,
+    "triggered_intents": {
+      "strong_purchase": 3,
+      "hesitation": 1,
+      "interaction": 1
+    },
+    "tactics": [
+      "emotional_trigger",
+      "interactive_hook",
+      "social_proof"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "没空看我的直播，宝宝我的粉丝群里面有回放的哈，有切片回放群相册里面哈，不用担心这个问题。",
+    "conversion_score": 22.0,
+    "triggered_intents": {
+      "hesitation": 1
+    },
+    "tactics": [
+      "interactive_hook",
+      "scarcity",
+      "emotional_trigger",
+      "authority",
+      "social_proof"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我虽然不能二十四小时陪伴你们，但是我的回放可以。",
+    "conversion_score": 22.0,
+    "triggered_intents": {
+      "hesitation": 1
+    },
+    "tactics": [
+      "urgency"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "看到没有？",
+    "conversion_score": 22.0,
+    "triggered_intents": {
+      "hesitation": 1
+    },
+    "tactics": [
+      "scarcity",
+      "emotional_trigger",
+      "interactive_hook",
+      "urgency",
+      "authority",
+      "social_proof"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "橱窗里面有，大家自己去看，二十几块钱一把，它有两个，一个是二十五块钱，一个是二十九块钱的。",
+    "conversion_score": 22.0,
+    "triggered_intents": {
+      "hesitation": 1
+    },
+    "tactics": [
+      "price_anchor",
+      "social_proof",
+      "scarcity",
+      "interactive_hook",
+      "emotional_trigger"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "二十九块钱别买它，带个那个嗯带个调色盘，我觉得没必要啊来。",
+    "conversion_score": 22.0,
+    "triggered_intents": {
+      "hesitation": 1
+    },
+    "tactics": [
+      "risk_reversal",
+      "price_anchor",
+      "scarcity",
+      "emotional_trigger",
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "哪里重点哪里，然后给它拍开，给它往边缘拍开哦，往边缘拍开往边缘拍开。",
+    "conversion_score": 21.5,
+    "triggered_intents": {
+      "purchase_consideration": 1,
+      "interaction": 2
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你今天去约会啊拍照啊需要上镜，需要精致一点，尽量都能有睫毛好一点啊啊。",
+    "conversion_score": 17.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "hesitation": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "你的心情也很。",
+    "conversion_score": 17.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "hesitation": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "和我一样。",
+    "conversion_score": 17.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "hesitation": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "我。",
+    "conversion_score": 17.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "hesitation": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "无法去抵抗。",
+    "conversion_score": 17.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "hesitation": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "垂直处内侧勾回来。",
+    "conversion_score": 16.5,
+    "triggered_intents": {
+      "interaction": 3,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "然后呢，假如是面部还有瑕疵的姐妹，我们的粉扑再取一点点粉上的不错。",
+    "conversion_score": 14.84,
+    "triggered_intents": {
+      "hesitation": 1,
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "没点关注的姐妹们点点关注好不好？",
+    "conversion_score": 14.84,
+    "triggered_intents": {
+      "hesitation": 1,
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "谢谢你们的支持。",
+    "conversion_score": 14.84,
+    "triggered_intents": {
+      "hesitation": 1,
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "然后呢，你看有瑕疵的地方，我们再叠加一点点，你看比如鼻梁上这个班啊叠加一点点，然后呢，你有那个瑕疵重的地方，你这个叠加一点点，你看。",
+    "conversion_score": 14.84,
+    "triggered_intents": {
+      "hesitation": 1,
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "所以我们高光也这么去打，你看看堤头凹进去凸起来，层次感它就出来了，知道吧？",
+    "conversion_score": 13.5,
+    "triggered_intents": {
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "洋芋粑可以吗？",
+    "conversion_score": 13.5,
+    "triggered_intents": {
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "那我用三个洋芋粑换来上面的位置。",
+    "conversion_score": 13.5,
+    "triggered_intents": {
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "接着高光打上去。",
+    "conversion_score": 13.5,
+    "triggered_intents": {
+      "interaction": 4,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "十七号链接粉底液皮肤经常有人说你白的话，你就选一百零一，没有人说过你白就用我脸上的这个色号，一百零二号色是比较大众的颜色，一百零二号色。",
+    "conversion_score": 11.5,
+    "triggered_intents": {
+      "hesitation": 1,
+      "interaction": 6,
+      "purchase_consideration": 1
+    },
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "全扎就无非就是把下面这个全扎上去，然后他也是比较气质，包括全扎的呃就是丸子头，只要是头孢里的一个效果都是这么去扎的，这样就可了，你也可以往前放。",
+    "conversion_score": 2.0,
+    "triggered_intents": {},
+    "tactics": [
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "但是其实你只要跟我学个两天三天，熟能生巧。",
+    "conversion_score": 2.0,
+    "triggered_intents": {
+      "interaction": 5
+    },
+    "tactics": [
+      "price_anchor"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "不满意包退包换，放心买",
+    "conversion_score": 0,
+    "triggered_intents": {
+      "interaction": 1,
+      "purchase_consideration": 1
+    },
+    "tactics": [
+      "risk_reversal"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "姐妹们觉得值不值扣1",
+    "conversion_score": 0,
+    "triggered_intents": {},
+    "tactics": [
+      "interactive_hook"
+    ],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这个地方其实应该要往上走一点点。",
+    "conversion_score": 0,
+    "triggered_intents": {},
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "好，这样子一个半扎马尾就可以了。",
+    "conversion_score": 0,
+    "triggered_intents": {},
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  },
+  {
+    "phrase": "这些这些的地方可以用发际线粉或者弄点小碎发给他挡一挡，但是不要太多啊。",
+    "conversion_score": 0,
+    "triggered_intents": {},
+    "tactics": [],
+    "industry": "beauty",
+    "product_type": "generic"
+  }
+]

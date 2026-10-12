@@ -1,0 +1,29 @@
+# docker-compose.yml — 生产环境（日常开发默认）
+# 仅启动 MinIO 对象存储。PG/Redis 共享 AIMS 的 postgres_dev/redis_dev 容器。
+#
+# 完整独立部署（含 PG + Redis + 后端 + Celery + Nginx）：
+#   docker compose -f docker-compose.standalone.yml up -d
+#
+# ⚠️ 端口约定：AIMS 占 QuestDB:9000 / Grafana:3000，本项目不得触碰。
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio_livestream
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin123}
+    ports:
+      - "9002:9000"   # API（避开 AIMS QuestDB 9000）
+      - "9003:9001"   # Console
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  minio_data:

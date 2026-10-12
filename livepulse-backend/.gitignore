@@ -1,0 +1,50 @@
+.env
+.env.*
+!.env.example
+!.env.production.example
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.production.example
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node
+node_modules/
+dist/
+
+# Editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated artifacts
+backend.log
+backend.err.log
+frontend.log
+*.wav
+uploaded_video.mp4
+semantic_analysis_output.json
+
+# Pipeline runtime logs (rotated by RotatingFileHandler)
+logs/
+backend/logs/
+
+# Static tool binaries (regenerable via scripts/install_tools.sh)
+.tools/
+
+# macOS Spotlight cache inside MinIO data dirs etc.
+.Spotlight-V100
+.Trashes
+
+# self-signed certs for local prod validation (regenerable via gen-self-signed.sh)
+deploy/prod/nginx/certs/

@@ -1,0 +1,107 @@
+# Backend CI — lint, test, migration validation
+# Runs on every PR and push to main. Must pass before merge.
+
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "backend/**"
+
+jobs:
+  lint:
+    name: Ruff Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install ruff
+        run: pip install ruff
+      - name: Lint
+        run: ruff check .
+
+  test:
+    name: Pytest (Unit + Integration)
+    runs-on: ubuntu-latest
+    needs: lint
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci_pw
+          POSTGRES_DB: livestream_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio
+      - name: Run unit tests
+        env:
+          DATABASE_URL: postgresql+asyncpg://ci:ci_pw@localhost:5432/livestream_test
+          MINIO_ACCESS_KEY: test
+          MINIO_SECRET_KEY: test
+          ALIYUN_ACCESS_KEY_ID: test
+          ALIYUN_ACCESS_KEY_SECRET: test
+        run: pytest tests/ -v --tb=short
+
+  migration:
+    name: Alembic Migration Check
+    runs-on: ubuntu-latest
+    needs: test
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci_pw
+          POSTGRES_DB: livestream_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          pip install alembic sqlalchemy psycopg2-binary
+      - name: Run migrations
+        env:
+          SQLALCHEMY_URL: postgresql://ci:ci_pw@localhost:5432/livestream_test
+        run: |
+          # Override alembic.ini URL for CI
+          alembic -x sqlalchemy.url=$SQLALCHEMY_URL upgrade head
+          alembic -x sqlalchemy.url=$SQLALCHEMY_URL check

@@ -1,0 +1,114 @@
+{
+  "_meta": {
+    "version": "v1",
+    "frozen": true,
+    "published_at": "2026-05-30",
+    "description": "Action key → narrative text mapping. Keys are STABLE; texts are V1 small-streamer voice. Future personas (MCN/coach/pro) get separate registries. Once 'frozen': true is set, do NOT edit existing entries — add new keys or bump version."
+  },
+  "actions": {
+    "strengthen_opening_hook": {
+      "signal": "hook_score",
+      "status": "under",
+      "short": "强化开场 hook",
+      "long": "前 30 秒没有抛出价值主张，新进观众容易划走。下次试试用「今天教你 1 分钟解决斑驳粉底」这种带具体收益的开场。",
+      "recommended_range": [60, 100],
+      "icon": "🎯"
+    },
+    "reduce_teaching_ratio": {
+      "signal": "teaching_ratio",
+      "status": "over",
+      "short": "压缩教学时长",
+      "long": "教学内容占比过高，挤压了产品介绍和促单时间。建议把教学控制在 30%-50%，腾出更多时间介绍产品和引导下单。",
+      "recommended_range": [0.30, 0.50],
+      "icon": "📚"
+    },
+    "increase_teaching_depth": {
+      "signal": "teaching_ratio",
+      "status": "under",
+      "short": "增加教学讲解",
+      "long": "教学内容偏少，观众难以理解产品价值。建议每个产品介绍后跟 30 秒-1 分钟的使用方法或痛点解决讲解。",
+      "recommended_range": [0.30, 0.50],
+      "icon": "📚"
+    },
+    "increase_promotion_density": {
+      "signal": "promotion_density",
+      "status": "under",
+      "short": "提升促销频率",
+      "long": "促销话术偏少，观众缺乏下单触发。建议每 5-10 分钟来一次明确的促销动作（限时/限量/福利）。",
+      "recommended_range": [0.15, 0.35],
+      "icon": "🔥"
+    },
+    "reduce_promotion_density": {
+      "signal": "promotion_density",
+      "status": "over",
+      "short": "减少促销频率",
+      "long": "促销话术密度过高，观众容易疲劳。建议穿插更多教学和产品介绍内容，让促销更稀缺有冲击力。",
+      "recommended_range": [0.15, 0.35],
+      "icon": "🔥"
+    },
+    "increase_product_intro": {
+      "signal": "product_intro_ratio",
+      "status": "under",
+      "short": "增加产品介绍",
+      "long": "产品介绍时间不够，观众对产品没建立基本认知，转化自然低。建议把产品介绍提到 20%-45% 的时长占比。",
+      "recommended_range": [0.20, 0.45],
+      "icon": "💄"
+    },
+    "reduce_product_intro": {
+      "signal": "product_intro_ratio",
+      "status": "over",
+      "short": "压缩产品介绍",
+      "long": "产品介绍占比过高，观众容易听腻。建议把单次产品介绍控制在 2-3 分钟，多产品轮换讲。",
+      "recommended_range": [0.20, 0.45],
+      "icon": "💄"
+    },
+    "expand_pain_point_coverage": {
+      "signal": "pain_point_coverage",
+      "status": "under",
+      "short": "覆盖更多用户痛点",
+      "long": "只提到 0-1 个用户痛点，难以引起广泛共鸣。建议在开场和产品讲解中主动列举 2-6 个常见美妆问题（斑驳/泛红/出油等）。",
+      "recommended_range": [2, 6],
+      "icon": "❤️‍🩹"
+    },
+    "focus_pain_points": {
+      "signal": "pain_point_coverage",
+      "status": "over",
+      "short": "聚焦核心痛点",
+      "long": "提到的痛点过多容易稀释每个的讲解深度。建议每场聚焦 3-5 个核心痛点，深入解决。",
+      "recommended_range": [2, 6],
+      "icon": "❤️‍🩹"
+    },
+    "stabilize_topics": {
+      "signal": "topic_stability_score",
+      "status": "under",
+      "short": "减少话题切换",
+      "long": "话题切换过于频繁，观众跟不上你的思路。建议每个主题至少讲 2-3 分钟再切下一个。",
+      "recommended_range": [0.4, 0.8],
+      "icon": "🧭"
+    },
+    "vary_topics": {
+      "signal": "topic_stability_score",
+      "status": "over",
+      "short": "适度切换话题",
+      "long": "单一话题持续过久容易让观众失去新鲜感。建议每 5-8 分钟做一次自然的话题切换。",
+      "recommended_range": [0.4, 0.8],
+      "icon": "🧭"
+    },
+    "slow_down_pace": {
+      "signal": "pace_score",
+      "status": "under",
+      "short": "放慢节奏",
+      "long": "讲解节奏过快，话题切换密集，观众无法消化。建议单次讲解延长到 15-30 秒以上再过渡。",
+      "recommended_range": [40, 80],
+      "icon": "🐢"
+    },
+    "speed_up_pace": {
+      "signal": "pace_score",
+      "status": "over",
+      "short": "加快节奏",
+      "long": "单点讲解过久容易让观众失去耐心。建议适度加快节奏，每 30 秒-1 分钟做一次小过渡。",
+      "recommended_range": [40, 80],
+      "icon": "🚀"
+    }
+  }
+}

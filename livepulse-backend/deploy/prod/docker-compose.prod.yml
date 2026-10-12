@@ -1,0 +1,215 @@
+# Production stack — A3 deploy target (本地可验证)
+#
+# 与开发 docker-compose.yml 的关键区别：
+#   1. 全部组件容器化（包括 backend / worker / frontend / nginx）
+#   2. backend 走 gunicorn + uvicorn workers，不再 --reload
+#   3. 卷挂载持久化 PG / MinIO / Redis（AOF）
+#   4. 所有 secret 走 .env.production，绝不写死镜像
+#   5. healthcheck 全配齐
+#   6. restart policy 走 unless-stopped
+#
+# 本地验证（不需要域名）：
+#   cp deploy/prod/.env.production.example deploy/prod/.env.production
+#   # 编辑 .env.production 填本地 secret（不需要真 aliyun key）
+#   docker compose -f deploy/prod/docker-compose.prod.yml --env-file deploy/prod/.env.production up -d
+#   curl -k https://localhost/api/v1/health   # -k 因为 self-signed
+#
+# ECS 部署（A3 启动后）：
+#   scp 整个 deploy/prod/ 目录到 ECS
+#   ssh ECS, cd /opt/livepulse, ./bootstrap.sh
+#   nginx 切换 self-signed → Let's Encrypt（README.md 里有 certbot 步骤）
+
+services:
+  # ---- Data layer --------------------------------------------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: livepulse_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # No port exposed externally — only the docker network can reach it.
+    # Local dev needs direct psql? Use `docker exec -it livepulse_postgres psql ...`
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: livepulse_redis
+    # AOF persistence enabled for prod — without it, Celery task state
+    # across worker restarts is lost. M1 cost: ~1MB/day disk for the
+    # current task volume. Rewrite policy default is fine.
+    command: redis-server --appendonly yes --appendfsync everysec
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  minio:
+    # M1 prod uses MinIO; M2 plan is to migrate to 阿里云 OSS.
+    # Switching is one config change (MINIO_ENDPOINT + add OSS access key)
+    # — keep this here until migration window.
+    image: minio/minio:latest
+    container_name: livepulse_minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - miniodata:/data
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # ---- App layer ---------------------------------------------------------
+  backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: livepulse_backend
+    environment:
+      # Connection strings rewritten for docker network DNS
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET:-livestream-videos}
+      MINIO_SECURE: "false"
+      # === A6 Celery: prod MUST run celery worker, this flips trigger to .delay() ===
+      USE_CELERY: "true"
+      # === Secrets (from .env.production) ===
+      API_KEY: ${API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET}
+      ALIYUN_ASR_APPKEY: ${ALIYUN_ASR_APPKEY:-}
+      # config.py defaults aliyun_frozen=True; prod MUST unfreeze or all
+      # OCR/ASR calls raise. Default here to false so a forgotten .env line
+      # doesn't silently brick the pipeline (audit P1-2).
+      ALIYUN_FROZEN: ${ALIYUN_FROZEN:-false}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      # === Observability ===
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      APP_ENV: prod
+      # === A3 prod hardening ===
+      ALLOW_ADMIN_API_KEY: "false"   # disable X-API-Key admin bypass in prod
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS}
+      AUTH_RATE_LIMIT: ${AUTH_RATE_LIMIT:-5/minute}
+    # 4 uvicorn workers via gunicorn — IO-bound API benefits from process
+    # parallelism without GIL contention. Tune for box: 2 × CPU + 1 is the
+    # gunicorn default heuristic, capped at memory budget.
+    command: >
+      gunicorn app.main:app
+      --workers 4
+      --worker-class uvicorn.workers.UvicornWorker
+      --bind 0.0.0.0:8004
+      --access-logfile -
+      --error-logfile -
+      --timeout 60
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8004/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s   # whisper / paddle init on first import
+    restart: unless-stopped
+
+  worker:
+    # Same image as backend — only the entrypoint differs.
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile
+    container_name: livepulse_worker
+    environment:
+      # All the same as backend (shared codebase, shared DB / Redis / MinIO)
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
+      MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
+      MINIO_BUCKET: ${MINIO_BUCKET:-livestream-videos}
+      MINIO_SECURE: "false"
+      USE_CELERY: "true"
+      API_KEY: ${API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      ALIYUN_ACCESS_KEY_ID: ${ALIYUN_ACCESS_KEY_ID}
+      ALIYUN_ACCESS_KEY_SECRET: ${ALIYUN_ACCESS_KEY_SECRET}
+      ALIYUN_ASR_APPKEY: ${ALIYUN_ASR_APPKEY:-}
+      ALIYUN_FROZEN: ${ALIYUN_FROZEN:-false}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      APP_ENV: prod
+    # Concurrency=2 for 2c4g ECS. Bump for larger box (see docs/A6).
+    # Linux doesn't need OBJC_DISABLE_INITIALIZE_FORK_SAFETY (Mac-only).
+    command: celery -A app.tasks worker --loglevel=info --concurrency=${WORKER_CONCURRENCY:-2}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    healthcheck:
+      # `celery inspect ping` returns OK if the worker is reachable via broker
+      test: ["CMD-SHELL", "celery -A app.tasks inspect ping -d celery@$$HOSTNAME || exit 1"]
+      interval: 60s
+      timeout: 15s
+      retries: 3
+      start_period: 90s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ../../frontend_v2
+      dockerfile: Dockerfile
+    container_name: livepulse_frontend
+    restart: unless-stopped
+    # No port exposed — nginx (the public-facing one) reverse-proxies to it
+    # via the docker network.
+
+  # ---- Edge --------------------------------------------------------------
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: livepulse_nginx
+    ports:
+      - "80:80"      # HTTP → 301 redirect to HTTPS
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  miniodata:
+  redisdata:

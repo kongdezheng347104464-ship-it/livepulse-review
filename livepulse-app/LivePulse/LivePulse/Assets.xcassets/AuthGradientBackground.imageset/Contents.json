@@ -1,0 +1,6 @@
+{
+  "images" : [
+    { "idiom" : "universal", "filename" : "auth.png" }
+  ],
+  "info" : { "author" : "xcode", "version" : 1 }
+}

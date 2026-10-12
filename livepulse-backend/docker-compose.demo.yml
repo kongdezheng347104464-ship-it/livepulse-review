@@ -1,0 +1,70 @@
+# 演示模式:不需要任何云 API key。启动后自动写入合成样例数据(见 backend/app/services/demo_seed.py)。
+#
+#   docker compose -f docker-compose.demo.yml up --build
+#   然后打开 http://localhost:8000/docs 验证,或启动网页端(见 README)。
+#
+# 演示账号(仅本地演示用,公开密码): demo@example.com / demo-password-123
+# 国内网络构建慢可加: --build-arg PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/
+#   (docker compose build --build-arg PIP_INDEX_URL=... 后再 up)
+
+name: livepulse-demo
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: livepulse
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo -d livepulse"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  minio:
+    image: minio/minio:latest
+    environment:
+      MINIO_ROOT_USER: demo-minio
+      MINIO_ROOT_PASSWORD: demo-minio-secret
+    command: server /data --console-address ":9001"
+    ports:
+      - "9002:9000"   # 浏览器通过 presigned URL 直接取视频
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DEMO_MODE: "1"
+      DATABASE_URL: postgresql+asyncpg://demo:demo@postgres:5432/livepulse
+      REDIS_URL: redis://redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      MINIO_ACCESS_KEY: demo-minio
+      MINIO_SECRET_KEY: demo-minio-secret
+      MINIO_BUCKET: livestream-videos
+      MINIO_SECURE: "false"
+      MINIO_PUBLIC_ENDPOINT: localhost:9002
+      ADMIN_EMAIL: demo@example.com
+      ADMIN_PASSWORD: demo-password-123
+      JWT_SECRET: demo-only-jwt-secret-do-not-use-in-production-0000
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      minio: {condition: service_healthy}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
