@@ -39,7 +39,7 @@ cd frontend_v2 && npm install && npm run dev                 # web app on http:/
 
 Log in with `demo@example.com` / `demo-password-123` (a public, local-only demo account).
 
-- The first build downloads PyTorch and friends and takes several minutes. The first start also generates an 11-minute sample video (~35 MB, never committed).
+- The first build downloads PyTorch and friends and takes roughly 10–40 minutes depending on your connection (the log goes quiet during large downloads — that is normal). The first start also generates an 11-minute sample video (~35 MB, never committed).
 - On a slow connection to PyPI: `docker compose -f docker-compose.demo.yml build --build-arg PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/`
 - **iOS:** open `livepulse-app/LivePulse/LivePulse.xcodeproj` in Xcode and run on a simulator. Debug builds talk to `http://127.0.0.1:8000`.
 

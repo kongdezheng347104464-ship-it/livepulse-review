@@ -39,7 +39,7 @@ cd frontend_v2 && npm install && npm run dev                 # 网页端 http://
 
 用 `demo@example.com` / `demo-password-123` 登录（公开的、仅限本地的演示账号）。
 
-- 第一次构建要下载 PyTorch 等依赖，需要几分钟。第一次启动还会现场生成一段 11 分钟的样例视频（约 35 MB，不会提交进仓库）。
+- 第一次构建要下载 PyTorch 等依赖，视网络情况大约需要 10–40 分钟（下载大文件时日志会长时间没有输出，属于正常现象）。第一次启动还会现场生成一段 11 分钟的样例视频（约 35 MB，不会提交进仓库）。
 - 国内访问 PyPI 慢：`docker compose -f docker-compose.demo.yml build --build-arg PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/`
 - **iOS**：用 Xcode 打开 `livepulse-app/LivePulse/LivePulse.xcodeproj`，在模拟器里运行。Debug 构建连接 `http://127.0.0.1:8000`。
 
