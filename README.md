@@ -32,7 +32,7 @@ Two clients share one backend: a native **iOS app** (SwiftUI) and a **web app** 
 Demo mode seeds a few fully synthetic, already-analysed sessions and generates a short sample video. It never calls any cloud AI service.
 
 ```bash
-git clone <this-repo-url> && cd <repo>/livepulse-backend
+git clone https://github.com/kongdezheng347104464-ship-it/livepulse-review.git && cd livepulse-review/livepulse-backend
 docker compose -f docker-compose.demo.yml up --build        # backend + db + object storage
 cd frontend_v2 && npm install && npm run dev                 # web app on http://localhost:3002
 ```

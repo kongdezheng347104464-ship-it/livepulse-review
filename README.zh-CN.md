@@ -32,7 +32,7 @@
 演示模式会写入几场完全合成、已分析完成的场次，并生成一段短样例视频，全程不调用任何云端 AI。
 
 ```bash
-git clone <本仓库地址> && cd <仓库目录>/livepulse-backend
+git clone https://github.com/kongdezheng347104464-ship-it/livepulse-review.git && cd livepulse-review/livepulse-backend
 docker compose -f docker-compose.demo.yml up --build        # 后端 + 数据库 + 对象存储
 cd frontend_v2 && npm install && npm run dev                 # 网页端 http://localhost:3002
 ```
